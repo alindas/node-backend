@@ -16,4 +16,19 @@ router.get('/test', async (ctx, next) => {
   ctx.body = 'Hello Koa'
 })
 
+router.get('/test/get', async (ctx, next) => {
+  const query = ctx.query;
+  ctx.body = query
+})
+
+router.get('/test/post', async (ctx, next) => {
+  const post = ctx.request.body;
+  ctx.body = post
+})
+
+router.get('/test/put', async (ctx, next) => {
+  const post = ctx.request.body;
+  ctx.body = post
+})
+
 module.exports = router
