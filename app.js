@@ -8,6 +8,7 @@ const cors = require('koa2-cors')
 const session = require('koa-session')
 
 const index = require('./routes/index')
+const arena = require('./routes/arena')
 
 const app = new Koa()
 // const sse = require('./utils/sse')
@@ -19,7 +20,7 @@ onerror(app)
 // 跨域请求
 app.use(cors({
   origin: function(ctx) {
-    if (ctx.url === '/test') {
+    if (/^\/test\/?/.test(ctx.url)) {
       return "*"; // 允许来自所有域名请求
     }
     return 'http://localhost:8080'; // 只允许 http://localhost: 8080 这个域名的请求
@@ -69,6 +70,9 @@ app.use(async(ctx, next) => {
 
 // 业务 router
 app.use(index.routes(), index.allowedMethods())
+
+// arena 项目路由
+app.use(arena.routes(), arena.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
