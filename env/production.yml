@@ -1,0 +1,38 @@
+# 服务器配置
+server:
+  port: 5001
+  host: "0.0.0.0"
+
+database:
+  host: "192.168.120.132"
+  port: 3306
+  username: "root"
+  password: "root"
+  database: "ruoyi"
+  # 连接池配置
+  pool:
+    max: 10
+    min: 0
+    acquire: 30000
+    idle: 10000
+  # 其他配置
+  timezone: "+08:00"
+  charset: "utf8mb4"
+  logging: false
+
+# Redis配置
+redis:
+  host: "192.168.120.132"
+  port: 6379
+  password: ""
+  db: 0
+  connectTimeout: 10000
+  # 连接池配置
+  poolOptions:
+    min: 2
+    max: 10
+
+# 日志配置覆盖
+logger:
+  level: "debug"
+  console: false
