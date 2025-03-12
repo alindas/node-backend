@@ -34,7 +34,7 @@ const ErrorCode = {
   UNAUTHORIZED_CODE: 401, // 未登录or登录失效
   FORBIDDEN_CODE: 403, // 无权限
 };
-const SuccessCode = { code: 0, message: "SUCCESS" };
+const SuccessCode = { code: 0, message: "SUCCESS" }; // 成功的 code 应该用 200
 module.exports = {
   ErrorCode,
   SuccessCode,

@@ -2,6 +2,9 @@ const { Sequelize } = require("sequelize");
 const config = require("./config");
 const { errorLogger, appLogger } = require("../log");
 
+/**
+ * sequelize 是用于nodejs ORM 库。提供模型便捷操作数据库。
+ */
 class SequelizeClient {
   constructor() {
     this.sequelize = null;

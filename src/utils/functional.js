@@ -15,7 +15,7 @@ const { pipe } = R;
 const pipeAsync =
   (...fns) =>
   x =>
-    fns.reduce((p, f) => p.then(f), Promise.resolve(x));
+    fns.reduce((p, f) => p.then(f), Promise.resolve(x)); // 空数组必须传递初始值
 
 module.exports = {
   pipe,

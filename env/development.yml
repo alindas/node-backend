@@ -11,11 +11,12 @@ database:
   password: "root"
   database: "ruoyi"
   # 连接池配置
+  # 连接池用于减少数据库连接的创建和销毁次数，提高数据库的性能和响应速度。
   pool:
-    max: 10
+    max: 10 # 最大连接数
     min: 0
-    acquire: 30000
-    idle: 10000
+    acquire: 30000 # 获取连接的超时时间，超过则请求连接失败
+    idle: 10000 # 连接空闲时间，超过则被释放
   # 其他配置
   timezone: "+08:00"
   charset: "utf8mb4"

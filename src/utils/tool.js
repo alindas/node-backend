@@ -1,5 +1,5 @@
 const IP2Region = require("ip2region").default;
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); // 生成 token 的库
 const SYSTEM = require("@/constants/cache");
 const { Op } = require("sequelize");
 const redis = require("@/core/redis");

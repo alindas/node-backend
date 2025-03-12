@@ -8,8 +8,14 @@ const winstonConfig = require("./config");
 
 const { format } = winston;
 // 确保日志目录存在
+/**
+ * process.cwd() 方法返回 Node.js 进程的当前工作目录。
+ */
 const logDir = path.join(process.cwd(), "logs");
 const categories = Object.values(winstonConfig.categories);
+/**
+ * 根据配置文件中的日志分类创建相应的日志目录。
+ */
 categories.forEach(category => {
   const categoryPath = path.join(logDir, category);
   if (!fs.existsSync(categoryPath)) {

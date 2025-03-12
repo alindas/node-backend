@@ -9,7 +9,7 @@ const { jwtTools } = require("@/utils/tool");
  * 验证 Token
  */
 const verifyToken = async (ctx, next) => {
-  // 白名单或者资源文件直接放行
+  // 白名单或者资源文件直接放行, 不需要token
   const path = ctx.path.startsWith(SYSTEM.API_PREFIX)
     ? ctx.path.replace(SYSTEM.API_PREFIX, "")
     : ctx.path;

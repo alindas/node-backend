@@ -36,11 +36,13 @@ bootstrap(app)
         process.exit(1);
       });
 
+    // 监听系统 SIGTERM 信号，通常用于请求程序优雅地终止。
+    // 这个信号通常由操作系统发送，例如在使用 kill 命令时，或者在容器编排系统（如 Kubernetes）中终止容器时
     process.on("SIGTERM", () => {
       appLogger.info("SIGTERM received. Shutting down gracefully...");
       server.close(() => {
         appLogger.info("Server closed");
-        process.exit(0);
+        process.exit(0); // 正常退出
       });
     });
 
@@ -61,5 +63,12 @@ bootstrap(app)
   })
   .catch(error => {
     appLogger.error("Failed to start server:", error);
-    process.exit(1);
+    process.exit(1); // 异常退出
   });
+
+  /**
+   * process.exit(0) && process.exit(1)
+   * 0 表示正常退出，1 表示异常退出
+   * 使用不同的退出码可为服务宿主提供不同的信号，以指示服务的状态。
+   * 例如，设置异常退出，宿主 Docker 可鉴于异常退出进行服务重启
+   */

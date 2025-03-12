@@ -23,6 +23,10 @@ const initMiddleware = app => {
   // 访问日志
   app.use(accessLogger);
   // 基础中间件
+  /**
+   * 解析请求头中的 User-Agent 信息
+   * 常见的有 设备信息、操作系统、浏览器信息、其他信息
+   */
   app.use(useragent);
   // 集成文件上传 会把上传的文件挂在在 ctx.request.files 上
   app.use(
