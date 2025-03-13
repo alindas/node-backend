@@ -4,6 +4,8 @@ const SYSTEM = require("@/constants/cache");
 const { Op } = require("sequelize");
 const redis = require("@/core/redis");
 
+// ip2region 是一个高性能离线IP地址查询库，能快速准确地将 IP地址转换为地理位置信息
+
 const Tools = {
   /**
    * ip转国内地址

@@ -23,10 +23,17 @@ class AuthService {
       height: 40,
       background: "#cc9966",
     });
+    /**
+     * Buffer 对象是一个包含原始二进制数据的固定大小的数组。
+     * 每个元素占用一个字节（8位），因此 Buffer 适合处理二进制数据，如文件内容、网络数据包
+     * 虽然 Buffer 对象的内容可以在创建后修改，但其长度是固定的，不能动态改变
+     * 常见的支持解析编码：base64\hex\utf8\ascii
+     */
     const imageBase64 = Buffer.from(captcha.data).toString("base64");
     const img = `data:image/svg+xml;base64,${imageBase64}`;
     const uuid = uuidv4();
     // 保存验证码到Redis
+    // setex 是 redis set&expire的合并，用于设置一个键值对，并指定过期时间
     await redis.setex(
       `${SYSTEM.CAPTCHA_KEY}${uuid}`,
       SYSTEM.CACHE_TTL.CAPTCHA_CODE_KEY, // 1分钟过期

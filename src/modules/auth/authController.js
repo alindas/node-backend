@@ -2,6 +2,15 @@ const { LoginLog } = require("@/decorator");
 const ResponceBody = require("@/utils/responceBody");
 const service = require("./authService");
 
+/**
+ * 类装饰器应用于类构造函数，可以用来监视、修改或替换类定义。
+ *
+ * 方法装饰器应用于类方法，可以用来监视、修改或替换一个方法的定义
+ * 它接收三个参数：目标对象、方法名和属性描述符。
+ *
+ * 装饰器只能用于类和类的方法，不能用于函数。因为函数存在函数提升。
+ */
+
 class AuthController {
   // 登录
   @LoginLog("0", "登录成功")
