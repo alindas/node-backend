@@ -5,6 +5,18 @@ const { generateModelsByTable } = require("@/core/database/generator");
 const { sqlLogger: logger } = require("@/core/log");
 
 /**
+ * 审计字段就是数据库表里的一些特殊列，用来记录数据的变化历史。
+ * 比如谁在什么时候创建了这条数据，谁修改过，什么时候修改的，甚至删除的时候有没有记录。
+ * 这些都是为了追踪数据的变动情况。
+ *
+ * 这些字段是脱离业务逻辑的，仅仅是用于系统内部的日后追踪。
+ * WHY?
+ * 1.​查问题方便
+ * 2.防止背黑锅
+ * 3.防止误操作
+ */
+
+/**
  * 添加审计字段到表
  * @param {string} tableName 表名
  * @param {string} flag 审计字段类型：'time'|'by'|'all'
@@ -86,4 +98,5 @@ async function addAuditFields(tableName, flag = "") {
   }
 }
 
+// 根据具体表名和审计字段类型调用函数
 // addAuditFields("users", "time");
