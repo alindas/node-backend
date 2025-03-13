@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const SequelizeAuto = require("sequelize-auto");
+const SequelizeAuto = require("sequelize-auto"); // 用于自动生成 Sequelize 模型
 const { sqlLogger: logger } = require("../log");
 
 const options = {
