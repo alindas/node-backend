@@ -50,7 +50,8 @@
   - `src/constants/stateCode.js` 中定义了错误码 请使用 `throw new AppError(ErrorCode.xxxx)`
 
 - service 请在 `src/modules/模块名/xxxService.js` 中补充
-  - service中的方法请尽可能的简单，不要出现业务逻辑
+  - ~~service中的方法请尽可能的简单，不要出现业务逻辑~~
+  - 本质上 service 是 处理数据。
 - router 请在 `src/modules/模块名/router.js` 中补充
   - 请严格遵顼restful api 规范
 

@@ -2,14 +2,14 @@
 # 服务器配置
 server:
   port: 5001
-  host: "0.0.0.0"
+  host: "0.0.0.0" # 监听所有网络接口
 
 database:
-  host: "192.168.120.132"
+  host: "127.0.0.1"
   port: 3306
   username: "root"
-  password: "root"
-  database: "ruoyi"
+  password: "root123"
+  database: "node_admin"
   # 连接池配置
   # 连接池用于减少数据库连接的创建和销毁次数，提高数据库的性能和响应速度。
   pool:
@@ -24,7 +24,7 @@ database:
 
 # Redis配置
 redis:
-  host: "192.168.120.132"
+  host: "127.0.0.1"
   port: 6379
   password: ""
   db: 0

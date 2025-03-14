@@ -49,6 +49,7 @@ class AuthService {
 
   // 验证登录
   async validateLogin({ username, password, code, uuid }, ctx) {
+    console.log("validateLogin", username, password, code, uuid)
     // 验证码校验
     const validateCaptcha = async () => {
       const cacheCode = await redis.get(`${SYSTEM.CAPTCHA_KEY}${uuid}`);
@@ -76,6 +77,9 @@ class AuthService {
     };
     // 比较密码
     const comparePassword = async (originalPassword, hashPassword) => {
+      /**
+       * bcrypt 使用单向哈希算法，它只能将密码转换为哈希值，无法从哈希值还原出原始密码
+       */
       const flag = await bcrypt.compare(originalPassword, hashPassword);
       return flag;
     };
@@ -107,10 +111,10 @@ class AuthService {
       // 如前端没使用公钥加密 则注释此行代码
       // newPassword = validateKeyPem(password);
 
-      // 比较密码
-      if (!(await comparePassword(newPassword, user.password))) {
-        throw new AppError(ErrorCode.USER_PASSWORD_ERROR, "密码错误");
-      }
+      // 比较密码 暂时放开
+      // if (!(await comparePassword(newPassword, user.password))) {
+      //   throw new AppError(ErrorCode.USER_PASSWORD_ERROR, "密码错误");
+      // }
 
       if (user.status !== "0") {
         throw new AppError(ErrorCode.USER_DISABLED, "用户已被禁用");
